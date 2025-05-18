@@ -1,229 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legacy of Thahims</title>
-    <meta name="description" content="Shahid Thahim Sahab">
-    <style>
-        body {
-            font-family: sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            color: #444;
-            background-color: #f8f8f8;
-        }
-        h1, h2, h3, h4 {
-            color: #007bff;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h2 {
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #e9ecef;
-        }
-   .image-suggestion {
-            font-style: italic;
-            color: #777;
-            margin-top: 10px;
-        }
-   .notable-figure-photo {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-   .family-photo {
-            max-width: 300px;
-            height: auto;
-            display: inline-block;
-            margin: 10px;
-            border: 1px solid #ccc;
-            padding: 5px;
-            background-color: white;
-            vertical-align: top;
-            cursor: pointer; /* Indicate that the images are clickable */
-        }
-    /* CSS for the popup box (you'll need to add JavaScript to control its visibility) */
-   .image-popup {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  <meta property="og:title" content="Abdul Salam Thahim">
+  <meta property="og:description" content="Abdul salams life & hobbies 😄👨‍💼⚽">
+  <meta property="og:image" content="http://thahim.github.io/ast/images/IMG-20250516-WA0027.jpg">
+  <meta property="og:url" content="https://yourwebsite.com">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdul Salam's World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fredoka One', cursive;
+      background: linear-gradient(to bottom right, #6a0dad, #b19cd9);
+      color: white;
+      cursor: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUyIDAgMTAgNC40OCAxMCAxMHMtNC40OCAxMC0xMCAxMFMyID'+
+      'E3LjUyIDIgMTJjMC01LjUyIDQuNDgtMTAgMTAtMTB6bTAgMmMtNC40MyAwLTggMy41Ny04IDhzMy41NyA4IDggOCA4LTMuNTcgOC04LTMuNTctOC04LTggeiIvPjwvc3ZnPg==') 12 12, auto;
     }
 
-   .image-popup-content {
-        margin: auto;
-        display: block;
-        max-width: 80%;
-        max-height: 80%;
+    nav {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
     }
 
-   .image-popup-close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        cursor: pointer;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
     }
 
-   .image-popup-close:hover,
-   .image-popup-close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
+    nav a:hover {
+      color: #ff69b4;
+      text-shadow: 0 0 5px #ff69b4;
     }
-    </style>
+
+    main {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .round-image {
+      border-radius: 50%;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      margin: 1rem auto;
+      border: 5px solid white;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      display: block;
+      cursor: pointer;
+    }
+
+    .round-image:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 0 15px 5px #ff69b4;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pointer-trail {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #ff69b4, #a020f0);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ff69b4;
+      border-radius: 15px;
+      padding: 1rem 2rem;
+      margin: 1.5rem auto;
+      max-width: 600px;
+      cursor: default;
+    }
+
+    .info-box a {
+      color: #ff69b4;
+      font-weight: bold;
+      text-decoration: none;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .info-box a:hover {
+      text-shadow: 0 0 8px #ff69b4;
+    }
+  </style>
+
+  <!-- Corrected meta tag -->
+  <meta property="og:title" content="hello saain">
 </head>
 <body>
-    <h1>The Thahim Tribe in Pakistan: A Cultural and Historical Tapestry</h1>
+  <div class="pointer-trail" id="trail"></div>
 
-    <h2>Introduction</h2>
-    <p>The Thahim tribe, also known as "Thahim," holds a distinguished place in the history and socio-political landscape of Pakistan, with deep roots in the Sindh and Punjab provinces. As a significant branch of the broader Jat community, the Thahim tribe is particularly recognized for its historical political dominance within Sindh. This overview aims to weave together the threads of their history, origins, cultural nuances, and notable contributions, presenting a comprehensive picture of the Thahim tribe's enduring legacy.</p>
-    <p class="image-suggestion">(Image suggestion: A collage featuring iconic cultural symbols of Sindh (e.g., Ajrak pattern, traditional Sindhi topi) and Punjab (e.g., vibrant textiles, a glimpse of rural life).)</p>
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('gallery')">Gallery</a>
+    <a onclick="showSection('legacy')">Legacy</a>
+  </nav>
 
-    <h2>Historical Roots and Ancestry</h2>
-    <p>The Thahim community's identity is firmly anchored within the Jat people, an Indo-Aryan tribal group with origins in the Punjab region that now spans across Pakistan and India. While their primary lineage traces back to the Jats, some accounts also suggest a historical connection to settlers of Arab origin, possibly linking them to the esteemed Banu Tamim tribe of Arabia.[1, 2, 3, 4] This dual narrative of ancestry adds a layer of complexity and richness to their historical tapestry. The Jats themselves have a long and storied past, with mentions in ancient texts and a significant rise to prominence during the Mughal era.</p>
-    <p class="image-suggestion">(Image suggestion: An artistic representation blending elements of ancient Indus Valley civilization (representing early Sindh), traditional Punjabi motifs, and subtle Arabic calligraphy.)</p>
+  <main>
+    <section id="home" class="section active">
+      <h1>Welcome to Abdul Salam's World</h1>
+      <img src="images/IMG-20250516-WA0027.jpg" alt="Abdul Salam" class="round-image" title="This is Abdul Salam! Click for fun!" />
+      <p>This is a fun space made just for Abdul Salam, filled with joy, color, and adventures!</p>
 
-    <h2>Geographical Presence: Sindh and Punjab</h2>
-    <p>The Thahim tribe's presence is most notable in the Sindh province, where they have historically been a politically influential community. The historical tombs of Thaheem nobles in Garhi Yasin, Shikarpur District, stand as enduring monuments to their long-standing presence and power in the region. Simultaneously, the Punjab province serves as a major demographic center for the Thahim tribe, as evidenced by the birthplace of Saadullah Khan Thahim in Chiniot and the substantial Tahim Jat population residing in Punjab today. This dual presence in Sindh and Punjab underscores the interconnected history and cultural links between these two vital provinces of Pakistan.</p>
-    <p class="image-suggestion">(Image suggestion: A map of Pakistan clearly demarcating the Sindh and Punjab provinces with subtle cultural icons overlaid on each.)</p>
+      <div class="info-box">
+        <h2>About Abdul Salam</h2>
+        <p>Abdul Salam loves exploring new things, playing with drones, and learning about technology.</p>
+        <p>Check out his favorite videos on <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a> and follow him on <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>.</p>
+      </div>
 
-    <h2>Social Fabric and Cultural Expressions</h2>
-    <p>As part of the Jat community, the Thahim tribe shares core social values emphasizing self-respect, the importance of lineage, and a preference for marriage within their community. These traditions, deeply rooted in the historical context of the Jats, have shaped the social fabric of the Thahim tribe. Linguistically, while Sindhi and Punjabi are prevalent in their respective regions, Saraiki holds significance as a language spoken within the Tahim Jat community. Culturally, like other Muslim Jat communities, the Thahim likely have their own unique forms of poetry, music, and traditions, possibly influenced by the rich cultural heritage of Sindh and Punjab, including elements like Sufi traditions and local customs. The strong sense of identity and pride characteristic of the Jats is also evident within the Thahim tribe, with a deep respect for their ancestors and a perceived capacity for leadership.</p>
-    <p class="image-suggestion">(Image suggestion: A mosaic of images showcasing traditional Sindhi crafts like Ajrak and Rilli work alongside vibrant Punjabi textiles and perhaps a musical instrument common to both regions.)</p>
+      <div class="info-box">
+        <h2>Learn & Play</h2>
+        <p>Want to know more? Visit the <a href="https://en.wikipedia.org/wiki/Technology" target="_blank" rel="noopener">Technology Wiki</a> or explore fun games like <a href="https://www.coolmathgames.com/" target="_blank" rel="noopener">Cool Math Games</a>.</p>
+      </div>
+    </section>
 
-    <h2>Political Standing and Socio-Economic Landscape</h2>
-    <p>The Thahim tribe's historical political dominance in Sindh has significantly influenced the region's power dynamics over time. While many Thahim Jats reside in rural areas, primarily engaged in agriculture as landowners, a growing number are pursuing education and achieving prominent positions in academic and technical fields. This blend of traditional roots and modern aspirations reflects the evolving socio-economic landscape of the community. The existence of traditional leadership within the tribe, such as the Sardar, further highlights their organized social structure.</p>
-    <p class="image-suggestion">(Image suggestion: A photograph depicting a respected elder from the Thahim community alongside a group of young, educated individuals, symbolizing the blend of tradition and modernity.)</p>
+    <section id="gallery" class="section">
+      <h1>Gallery</h1>
+      <div class="gallery">
+        <img src="/images/20180711_122721.jpg" alt="Fun moment 1" class="round-image" />
+        <img src="https://github.com/thahim/ast/blob/main/images/20180712_153354.jpg" alt="Fun moment 2" class="round-image" />
+        <img src="https://github.com/thahim/ast/blob/main/images/20180713_140814.jpg" alt="Fun moment 3" class="round-image" />
+      </div>
+    </section>
 
-    <h2>Legacy Through Notable Figures</h2>
-    <div class="notable-figure-photo">
-        <img src="https://github.com/thahim/tribe/blob/main/daddy001.jpg?raw=true" alt="Abdul Salam Thahim Senior" class="family-photo" onclick="openPopup(this.src)">
-        <img src="https://github.com/thahim/tribe/blob/main/shahidkhan.jpg?raw=true" alt="Shahid Thahim" class="family-photo" onclick="openPopup(this.src)">
-        <img src="https://github.com/thahim/tribe/blob/main/fahadkhan%20.jpg?raw=true" alt="Fahad Thahim" class="family-photo" onclick="openPopup(this.src)">
-        <img src="https://github.com/thahim/tribe/blob/main/me.jpg?raw=true" alt="Saad Thahim" class="family-photo" onclick="openPopup(this.src)">
-        <img src="https://github.com/thahim/tribe/blob/main/son.jpg?raw=true" alt="Abdul Salam Thahim Junior" class="family-photo" onclick="openPopup(this.src)">
-    </div>
-    <p>The Thahim tribe has produced several notable figures who have significantly contributed to the socio-political landscape of Sindh and Pakistan. Among them is <b>Abdul Salam Thahim</b>, your father, who served as a minister in the Province of Sindh four times and was a founding member of the Pakistan People's Party. His contributions have left a lasting impact on the region's political history.</p>
-    <p>Continuing this legacy of political involvement, your elder brother, <a href="https://en.wikipedia.org/wiki/Shahid_Abdul_Salam_Thahim" title="Legacy of Thahims" description="Shahid Thahim Sahab"><b>Shahid Thahim</b></a>, currently holds a prominent position, having been elected as a minister for the third time.[5] He has followed in your father's footsteps, serving the people of Sindh. Your son carries the name of <b>Abdul Salam Thahim</b>, honoring his grandfather's memory and legacy.</p>
-    <p>Another towering figure is Saadullah Khan Thahim (1591-1656), who ascended to the esteemed position of Grand Vizier of the Mughal Empire during the reign of Emperor Shah Jahan I. His exceptional intelligence and administrative prowess were widely recognized, making him one of the most influential nobles of his time. Saadullah Khan's contributions extended to patronage of arts and architecture, potentially including involvement in the decoration of the Taj Mahal.[2, 6, 7, 4] His lineage also connects to the founding of the Hyderabad State through his maternal grandson, Nizam ul Mulk. The existence of historical tombs of other Thaheem nobles in Shikarpur, who were martyred in battle , further underscores the tribe's history of valor and influence.</p>
-    <p class="image-suggestion">(Image suggestion: A distinguished portrait of Saadullah Khan Thahim, possibly incorporating a subtle Mughal architectural element in the background.)</p>
+    <section id="legacy" class="section">
+      <h1>Legacy of Thahim Tribe</h1>
+      <div class="info-box">
+        <p>Discover the proud history and legacy of the Thahim tribe.</p>
+        <p><a href="https://github.com/thahim/tribe/blob/main/index.html" target="_blank" rel="noopener">View the Legacy Page</a></p>
+      </div>
+    </section>
+  </main>
 
-    <h2>Recent Developments</h2>
-    <p>Contemporary news highlights the ongoing relevance of the Thahim tribe in Pakistan. While a reported tribal clash in Jacobabad in 2023 indicates the persistence of traditional social dynamics , the tribe's representation in politics through figures like your father and brother demonstrates their continued engagement in shaping the region's future.</p>
-    <p class="image-suggestion">(Image suggestion: A recent photograph of Sindh's political landscape or a symbolic image representing the continuity of leadership within the Thahim tribe.)</p>
+  <script>
+    const trail = document.getElementById("trail");
+    document.addEventListener("mousemove", (e) => {
+      trail.style.top = e.clientY + "px";
+      trail.style.left = e.clientX + "px";
+    });
 
-    <h2>Conclusion</h2>
-    <p>The Thahim tribe stands as a vibrant thread in the rich tapestry of Pakistan's history and culture. From their roots as part of the Jat community with possible Arab connections, to their historical political prominence in Sindh and significant presence in Punjab, the Thahim tribe has made notable contributions across various spheres. Their enduring legacy, marked by influential figures and a strong cultural identity, continues to shape the socio-political landscape of Pakistan.</p>
-
-    <h2>Table 1: Notable Figures of the Thahim Tribe</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Title/Role</th>
-                <th>Period/Significance</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Abdul Salam Thahim</td>
-                <td>Minister of Province of Sindh</td>
-                <td>Served 4 times; Founder member of Pakistan People's Party.</td>
-            </tr>
-            <tr>
-                <td>Shahid Thahim</td>
-                <td>Minister of Province of Sindh</td>
-                <td>Current minister (3rd time).[5]</td>
-            </tr>
-            <tr>
-                <td>Saadullah Khan Thahim</td>
-                <td>Grand Vizier of the Mughal Empire</td>
-                <td>1645-1656; Significant contributions to Mughal administration, patronage of arts.</td>
-            </tr>
-            <tr>
-                <td>Sardar Abdul Nabi Khan Thaheem</td>
-                <td>Chief of the Thahim Tribe</td>
-                <td>As of 2019; Contemporary leader of the tribe.</td>
-            </tr>
-            <tr>
-                <td>Thaheem Nobles</td>
-                <td>Nobles of the Thaheem Tribe</td>
-                <td>Martyred during a battle between Kalhoras and Durrani Afghans (historical).</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Table 2: Geographical Distribution of the Thahim Tribe in Pakistan</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Province</th>
-                <th>Estimated Population</th>
-                <th>Key Regions/Districts</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Sindh</td>
-                <td>Data Unavailable</td>
-                <td>Shikarpur District (Garhi Yasin, Jacobabad)</td>
-            </tr>
-            <tr>
-                <td>Punjab</td>
-                <td>~461,000</td>
-                <td>Lahore Subah (Chiniot) , Rahim Yar Khan</td>
-            </tr>
-            <tr>
-                <td>Khyber-Pakhtunkhwa</td>
-                <td>~4,200</td>
-                <td>Data Unavailable</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div id="imagePopup" class="image-popup">
-        <span class="image-popup-close" onclick="closePopup()">&times;</span>
-        <img class="image-popup-content" id="popupImage">
-    </div>
-
-    <script>
-    // JavaScript to control the popup (you might need to enhance this for a themed UI)
-    function openPopup(imgSrc) {
-        const popup = document.getElementById("imagePopup");
-        const popupImg = document.getElementById("popupImage");
-        popup.style.display = "block";
-        popupImg.src = imgSrc;
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
 
-    function closePopup() {
-        document.getElementById("imagePopup").style.display = "none";
-    }
-    </script>
+    document.querySelector('.round-image').addEventListener('click', () => {
+      alert('Hello from Abdul Salam! Keep exploring and having fun!');
+    });
+  </script>
 </body>
 </html>
