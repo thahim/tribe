@@ -37,27 +37,64 @@
         th {
             background-color: #e9ecef;
         }
-     .image-suggestion {
+   .image-suggestion {
             font-style: italic;
             color: #777;
             margin-top: 10px;
         }
-     .notable-figure-photo {
+   .notable-figure-photo {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-     .family-photo {
-            max-width: 400px;
+   .family-photo {
+            max-width: 300px;
             height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 15px;
+            display: inline-block;
+            margin: 10px;
             border: 1px solid #ccc;
             padding: 5px;
             background-color: white;
+            vertical-align: top;
+            cursor: pointer; /* Indicate that the images are clickable */
         }
+    /* CSS for the popup box (you'll need to add JavaScript to control its visibility) */
+   .image-popup {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+   .image-popup-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+   .image-popup-close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+   .image-popup-close:hover,
+   .image-popup-close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
     </style>
 </head>
 <body>
@@ -85,9 +122,11 @@
 
     <h2>Legacy Through Notable Figures</h2>
     <div class="notable-figure-photo">
-        <img src="https://github.com/thahim/tribe/blob/main/daddy001.jpg?raw=true" alt="Abdul Salam Thahim" class="family-photo">
-        <img src="https://github.com/thahim/tribe/blob/main/shahidkhan.jpg?raw=true" alt="Shahid Thahim" class="family-photo">
-        <img src="https://github.com/thahim/tribe/blob/main/son.jpg?raw=true" alt="Abdul Salam Thahim (Son)" class="family-photo">
+        <img src="https://github.com/thahim/tribe/blob/main/daddy001.jpg?raw=true" alt="Abdul Salam Thahim Senior" class="family-photo" onclick="openPopup(this.src)">
+        <img src="https://github.com/thahim/tribe/blob/main/shahidkhan.jpg?raw=true" alt="Shahid Thahim" class="family-photo" onclick="openPopup(this.src)">
+        <img src="https://github.com/thahim/tribe/blob/main/fahadkhan%20.jpg?raw=true" alt="Fahad Thahim" class="family-photo" onclick="openPopup(this.src)">
+        <img src="https://github.com/thahim/tribe/blob/main/me.jpg?raw=true" alt="Saad Thahim" class="family-photo" onclick="openPopup(this.src)">
+        <img src="https://github.com/thahim/tribe/blob/main/son.jpg?raw=true" alt="Abdul Salam Thahim Junior" class="family-photo" onclick="openPopup(this.src)">
     </div>
     <p>The Thahim tribe has produced several notable figures who have significantly contributed to the socio-political landscape of Sindh and Pakistan. Among them is <b>Abdul Salam Thahim</b>, your father, who served as a minister in the Province of Sindh four times and was a founding member of the Pakistan People's Party. His contributions have left a lasting impact on the region's political history.</p>
     <p>Continuing this legacy of political involvement, your elder brother, <b>Shahid Thahim</b>, currently holds a prominent position, having been elected as a minister for the third time.[5] He has followed in your father's footsteps, serving the people of Sindh. Your son carries the name of <b>Abdul Salam Thahim</b>, honoring his grandfather's memory and legacy.</p>
@@ -166,5 +205,24 @@
             </tr>
         </tbody>
     </table>
+
+    <div id="imagePopup" class="image-popup">
+        <span class="image-popup-close" onclick="closePopup()">&times;</span>
+        <img class="image-popup-content" id="popupImage">
+    </div>
+
+    <script>
+    // JavaScript to control the popup (you might need to enhance this for a themed UI)
+    function openPopup(imgSrc) {
+        const popup = document.getElementById("imagePopup");
+        const popupImg = document.getElementById("popupImage");
+        popup.style.display = "block";
+        popupImg.src = imgSrc;
+    }
+
+    function closePopup() {
+        document.getElementById("imagePopup").style.display = "none";
+    }
+    </script>
 </body>
 </html>
