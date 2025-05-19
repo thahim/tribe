@@ -1,227 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thahim Family</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdul Salam Thahim</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f8ff;
-      color: #333;
-      scroll-behavior: smooth;
-    }
+  <!-- Meta Description -->
+  <meta name="description" content="Legacy of Thahims - Honoring Abdul Salam Thahim and the proud Thahim family from Sindh." />
 
-    header {
-      background: #5ea6e0;
-      color: white;
-      padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abdul Salam Thahim" />
+  <meta property="og:description" content="Legacy of Thahims - Honoring Abdul Salam Thahim and the proud Thahim family from Sindh." />
+  <meta property="og:image" content="https://github.com/thahim/tribe/blob/main/shahidkhan.jpg" />
+  <meta property="og:url" content="https://thahimfamily.com" />
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      max-width: 960px;
-      margin: auto;
-    }
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Abdul Salam Thahim" />
+  <meta name="twitter:description" content="Legacy of Thahims - Honoring Abdul Salam Thahim and the proud Thahim family from Sindh." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" />
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 40px;
-    }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
 
-    .member-card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      width: 200px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+    /* Hero Section */
+    #hero {
+      background: #eef7ff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    #hero img {
+      width: 100%;
+      max-width: 600px;
+      max-height: 500px;
+      object-fit: cover;
+      border: 8px solid #3a86c0;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    #hero h1 {
+      margin-top: 20px;
+      font-size: 2.2rem;
+      color: #1b4f72;
+    }
+    #hero p {
+      font-size: 1.1rem;
+      color: #444;
+      font-weight: bold;
+    }
 
-    .member-card:hover {
-      transform: translateY(-10px);
-    }
+    /* Navigation */
+    header {
+      background: #5ea6e0;
+      color: white;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding-bottom: 5px;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 3px;
+      background: yellow;
+      transition: 0.3s;
+    }
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
 
-    .member-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 3px solid #5ea6e0;
-    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+      max-width: 960px;
+      margin: auto;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .member-name {
-      margin-top: 12px;
-      font-weight: bold;
-      color: #3a86c0;
-    }
+    h1, h2 {
+      color: #3a86c0;
+      margin-bottom: 10px;
+    }
 
-    .member-desc {
-      font-size: 0.9rem;
-      color: #666;
-    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
 
-    footer {
-      background: #3a86c0;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+    .member-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 200px;
+      transition: transform 0.3s ease;
+    }
 
-    /* Graphical Lightbox Popup */
-    #popupOverlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
+    .member-card:hover {
+      transform: translateY(-10px);
+    }
 
-    #popupImage {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 0 20px white;
-      animation: zoomIn 0.4s ease;
-    }
+    .member-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 3px solid #5ea6e0;
+    }
 
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    .member-name {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #3a86c0;
+    }
 
-    #closeBtn {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  </style>
+    .member-desc {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer {
+      background: #3a86c0;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Lightbox Popup */
+    .lightbox {
+      position: fixed;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid white;
+      border-radius: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    a {
+      color: #0077cc;
+    }
+  </style>
 </head>
 <body>
 
+<!-- Hero Section with Shahid Khan Thahim -->
+<section id="hero">
+  <div>
+    <img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg"
+         alt="Shahid Khan Thahim" />
+    <h1>Shahid Khan Thahim</h1>
+    <p>Minister Labour & Human Resources<br>Government of Sindh</p>
+  </div>
+</section>
+
 <header>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <section id="home">
-  <h1>Welcome to the Thahim Family</h1>
-  <p>Proudly presenting our legacy and heritage from Sindh.</p>
+  <h1>Welcome to the Thahim Family</h1>
+  <p>Proudly presenting our legacy and heritage from Sindh.</p>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px; margin-top: 40px;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" alt="Shahid Khan Thahim" style="width: 200px; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: 4px solid #3a86c0;" />
+      <h3 style="margin: 10px 0 5px 0; color: #3a86c0;">Mr. Shahid Khan Thahim</h3>
+      <p style="margin: 0; font-size: 0.95rem;">Minister Labour & Human Resources<br>Sindh Government</p>
+    </div>
+
+    <div>
+      <img src="https://raw.githubusercontent.com/thahim/tribe/main/sindhlogo.jpeg" alt="Sindh Government Logo" style="width: 140px; height: auto; border-radius: 8px;" />
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Our Family</h2>
+  <p>The Thahim family has a strong legacy in agriculture, business, and public service in Sindh. We honor our roots and carry our values forward.</p>
 </section>
 
 <section id="gallery">
-  <h2>Family Members</h2>
-  <div class="gallery">
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" alt="Abdul Salam Thahim">
-      <div class="member-name">Abdul Salam Thahim</div>
-      <div class="member-desc">Legendary Father</div>
-    </div>
+  <h2>Family Members</h2>
+  <div class="gallery">
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" alt="Shahid Thahim">
-      <div class="member-name">Shahid Thahim</div>
-      <div class="member-desc">Minister of Labour</div>
-    </div>
+    <div class="member-card">
+      <a href="#img1"><img src="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" alt="Abdul Salam Thahim" /></a>
+      <div class="member-name">Abdul Salam Thahim</div>
+      <div class="member-desc">Legendary Father</div>
+    </div>
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg" alt="Asif Thahim">
-      <div class="member-name">Asif Thahim</div>
-      <div class="member-desc">Brother (1972 - 2013)</div>
-    </div>
+    <div class="member-card">
+      <a href="#img2"><img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" alt="Shahid Thahim" /></a>
+      <div class="member-name">Shahid Thahim</div>
+      <div class="member-desc">Minister of Labour</div>
+    </div>
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg" alt="Abdul Rehman Thahim">
-      <div class="member-name">Abdul Rehman Thahim</div>
-      <div class="member-desc">Uncle, Businessman</div>
-    </div>
+    <div class="member-card">
+      <a href="#img3"><img src="https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg" alt="Asif Thahim" /></a>
+      <div class="member-name">Asif Thahim</div>
+      <div class="member-desc">Brother (1972 - 2013)</div>
+    </div>
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg" alt="Abdul Khakique Thahim">
-      <div class="member-name">Abdul Khakique Thahim</div>
-      <div class="member-desc">Alias Abdul Aziz Thahim<br>Landlord</div>
-    </div>
+    <div class="member-card">
+      <a href="#img4"><img src="https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg" alt="Abdul Khakique Thahim" /></a>
+      <div class="member-name">Abdul Khakique Thahim</div>
+      <div class="member-desc">Uncle, Landlord</div>
+    </div>
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/me.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" alt="Saad Thahim">
-      <div class="member-name">Saad Thahim</div>
-      <div class="member-desc">Businessman & Govt. Employee</div>
-    </div>
+    <div class="member-card">
+      <a href="#img5"><img src="https://raw.githubusercontent.com/thahim/tribe/main/fahadkhan%20.jpg" alt="Fahad Thahim" /></a>
+      <div class="member-name">Fahad Thahim</div>
+      <div class="member-desc">Lexus Motor City, USA</div>
+    </div>
 
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/son.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" alt="Abdul Salam Jr">
-      <div class="member-name">Abdul Salam Jr</div>
-      <div class="member-desc">4th Grade, FPS Karachi</div>
-    </div>
-  </div>
+    <div class="member-card">
+      <a href="#img6"><img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" alt="Saad Thahim" /></a>
+      <div class="member-name">Saad Thahim</div>
+      <div class="member-desc">Businessman & Govt. Employee</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img7"><img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" alt="Abdul Salam Thahim Jr" /></a>
+      <div class="member-name">Abdul Salam Jr</div>
+      <div class="member-desc">4th Grade, FPS Karachi</div>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: <a href="mailto:info@thahimfamily.com">info@thahimfamily.com</a><br>
-     Phone: <a href="https://wa.me/923002100783" target="_blank">+92 300 2100783</a><br>
-     Location: Karachi, Sindh, Pakistan</p>
+  <h2>Contact Us</h2>
+  <p>
+    Email: <a href="mailto:info@thahimfamily.com">info@thahimfamily.com</a><br />
+    Phone: <a href="https://wa.me/923002100783" target="_blank">+92 300 2100783</a><br />
+    Location: Karachi, Sindh, Pakistan
+  </p>
 </section>
 
 <footer>
-  &copy; 2025 Thahim Family. All rights reserved.
+  &copy; 2025 Thahim Family. All rights reserved.
 </footer>
 
-<!-- Graphical Popup Overlay -->
-<div id="popupOverlay">
-  <span id="closeBtn" onclick="closePopup()">&times;</span>
-  <img id="popupImage" src="" alt="Popup Image" />
-</div>
+<!-- Lightbox Popups -->
+<div id="img1" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" /></a></div>
+<div id="img2" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" /></a></div>
+<div id="img3" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg" /></a></div>
+<div id="img4" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg" /></a></div>
+<div id="img5" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/fahadkhan%20.jpg" /></a></div>
+<div id="img6" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" /></a></div>
+<div id="img7" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" /></a></div>
 
 <script>
-  function openPopup(imageUrl) {
-    document.getElementById("popupImage").src = imageUrl;
-    document.getElementById("popupOverlay").style.display = "flex";
-  }
+  // Fade in sections on scroll
+  const sections = document.querySelectorAll("section");
 
-  function closePopup() {
-    document.getElementById("popupOverlay").style.display = "none";
-  }
+  function fadeInOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach((sec) => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        sec.classList.add("visible");
+      }
+    });
+  }
 
-  // Close popup on ESC key
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") closePopup();
-  });
-
-  // Close on outside click
-  document.getElementById("popupOverlay").addEventListener("click", function(e) {
-    if (e.target.id === "popupOverlay") closePopup();
-  });
+  window.addEventListener("scroll", fadeInOnScroll);
+  window.addEventListener("load", fadeInOnScroll);
 </script>
 
 </body>
