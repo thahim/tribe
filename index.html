@@ -1,150 +1,260 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-
-const App = () => (
-  <Router>
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/family" element={<Family />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  </Router>
-);
-
-const Header = () => (
-  <header className="bg-gray-800 text-white p-4 flex items-center justify-between">
-    <div className="flex items-center space-x-4">
-      <img
-        src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg"
-        alt="Abdul Salam Thahim Jr."
-        className="w-16 h-16 rounded-full border-2 border-white"
-      />
-      <h1 className="text-xl font-bold">Thahim Legacy</h1>
-    </div>
-    <nav className="space-x-4">
-      <Link className="hover:underline" to="/">Home</Link>
-      <Link className="hover:underline" to="/family">Family</Link>
-      <Link className="hover:underline" to="/about">About</Link>
-    </nav>
-  </header>
-);
-
-const Home = () => (
-  <motion.section
-    className="p-8 space-y-6"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-  >
-    <h2 className="text-3xl font-semibold">Welcome to the Thahim Legacy</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <motion.div
-        className="p-6 bg-white shadow-lg rounded-lg"
-        whileHover={{ scale: 1.05 }}
-      >
-        <h3 className="text-xl font-medium">Our History</h3>
-        <p className="mt-2 text-gray-600">
-          Discover the origins and journey of the Thahim tribe, including our ties to the Tamim tribe and Soomros.
-        </p>
-      </motion.div>
-      <motion.div
-        className="p-6 bg-white shadow-lg rounded-lg"
-        whileHover={{ scale: 1.05 }}
-      >
-        <h3 className="text-xl font-medium">Notable Moments</h3>
-        <p className="mt-2 text-gray-600">
-          Explore our family's connection to Benazir Bhutto and contributions to Pakistan's political landscape.
-        </p>
-      </motion.div>
-    </div>
-  </motion.section>
-);
-
-const Family = () => {
-  const members = [
-    {
-      name: 'Abdul Salam Thahim (Father)',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg',
-      bio: 'A respected patriarch of the Thahim family.'
-    },
-    {
-      name: 'Saad Thahim (You)',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/me.jpg',
-      bio: 'Fourth son of Abdul Salam Thahim and grandson of Haji Gul Mohammad Khan Thahim.'
-    },
-    {
-      name: 'Fahad Thahim',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/benazir002.jpg',
-      bio: 'Seen with Benazir Bhutto. Now working in Lexus Motorcity, Bakersfield, CA.'
-    },
-    {
-      name: 'Shahid Thahim',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg',
-      bio: 'Labour Minister of Sindh, also seen with Benazir Bhutto.'
-    },
-    {
-      name: 'Asif Ali Khan Thahim',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg',
-      bio: 'Elder brother who passed away in 2013.'
-    },
-    {
-      name: 'Benazir Bhutto Visit',
-      img: 'https://raw.githubusercontent.com/thahim/tribe/main/benazir001.jpg',
-      bio: 'When our mother Mrs. Irshad (Mrs. Abdul Salam Thahim) met Benazir Bhutto.'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thahim Family</title>
+  <style>
+    * {
+      box-sizing: border-box;
     }
-  ];
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
 
-  return (
-    <motion.section
-      className="p-8 grid grid-cols-1 md:grid-cols-3 gap-8"
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      {members.map((person, i) => (
-        <motion.div
-          key={i}
-          className="bg-white rounded-2xl shadow p-6 text-center"
-          whileHover={{ y: -10 }}
-        >
-          <img
-            src={person.img}
-            alt={person.name}
-            className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-          />
-          <h4 className="text-lg font-semibold">{person.name}</h4>
-          <p className="text-gray-500 mt-2">{person.bio}</p>
-        </motion.div>
-      ))}
-    </motion.section>
-  );
-};
+    /* Navigation */
+    header {
+      background: #5ea6e0;
+      color: white;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding-bottom: 5px;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 3px;
+      background: yellow;
+      transition: 0.3s;
+    }
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
 
-const About = () => (
-  <motion.section
-    className="p-8 max-w-3xl mx-auto space-y-4"
-    initial={{ scale: 0.9, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ duration: 0.7 }}
-  >
-    <h2 className="text-2xl font-semibold">About This Site</h2>
-    <p className="text-gray-700">
-      Developed by <strong>Abdul Salam Thahim</strong>, this site showcases the legacy of the Thahim family: our tribal roots, our historical connections, and our modern achievements across continents.
-    </p>
-  </motion.section>
-);
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+      max-width: 960px;
+      margin: auto;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-const Footer = () => (
-  <footer className="bg-gray-900 text-gray-400 text-center py-4">
-    © {new Date().getFullYear()} Thahim Legacy. All rights reserved.
-  </footer>
-);
+    h1, h2 {
+      color: #3a86c0;
+      margin-bottom: 10px;
+    }
 
-export default App;
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .member-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 200px;
+      transition: transform 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .member-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 3px solid #5ea6e0;
+    }
+
+    .member-name {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #3a86c0;
+    }
+
+    .member-desc {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer {
+      background: #3a86c0;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Lightbox Popup */
+    .lightbox {
+      position: fixed;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid white;
+      border-radius: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    /* Contact */
+    a {
+      color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h1>Welcome to the Thahim Family</h1>
+  <p>Proudly presenting our legacy and heritage from Sindh.</p>
+</section>
+
+<section id="about">
+  <h2>About Our Family</h2>
+  <p>The Thahim family has a strong legacy in agriculture, business, and public service in Sindh. We honor our roots and carry our values forward.</p>
+</section>
+
+<section id="gallery">
+  <h2>Family Members</h2>
+  <div class="gallery">
+
+    <div class="member-card">
+      <a href="#img1"><img src="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" alt="Abdul Salam Thahim" /></a>
+      <div class="member-name">Abdul Salam Thahim</div>
+      <div class="member-desc">Legendary Father</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img2"><img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" alt="Shahid Thahim" /></a>
+      <div class="member-name">Shahid Thahim</div>
+      <div class="member-desc">Minister of Labour</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img3"><img src="https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg" alt="Asif Thahim" /></a>
+      <div class="member-name">Asif Thahim</div>
+      <div class="member-desc">Brother (d. 2013)</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img4"><img src="https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg" alt="Abdul Rehman Thahim" /></a>
+      <div class="member-name">Abdul Rehman Thahim</div>
+      <div class="member-desc">Uncle, Businessman</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img5"><img src="https://raw.githubusercontent.com/thahim/tribe/main/fahadkhan%20.jpg" alt="Fahad Thahim" /></a>
+      <div class="member-name">Fahad Thahim</div>
+      <div class="member-desc">Lexus Motor City, USA</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img6"><img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" alt="Saad Thahim" /></a>
+      <div class="member-name">Saad Thahim</div>
+      <div class="member-desc">Businessman & Govt. Employee</div>
+    </div>
+
+    <div class="member-card">
+      <a href="#img7"><img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" alt="Abdul Salam Thahim Jr" /></a>
+      <div class="member-name">Abdul Salam Jr</div>
+      <div class="member-desc">4th Grade, FPS Karachi</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>
+    Email: <a href="mailto:info@thahimfamily.com">info@thahimfamily.com</a><br />
+    Phone: <a href="https://wa.me/923002100783" target="_blank">+92 300 2100783</a><br />
+    Location: Karachi, Sindh, Pakistan
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Thahim Family. All rights reserved.
+</footer>
+
+<!-- Lightbox Popups -->
+<div id="img1" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/daddy001.jpg" /></a></div>
+<div id="img2" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan.jpg" /></a></div>
+<div id="img3" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/asifthahim.jpg" /></a></div>
+<div id="img4" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg" /></a></div>
+<div id="img5" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/fahadkhan%20.jpg" /></a></div>
+<div id="img6" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" /></a></div>
+<div id="img7" class="lightbox"><a href="#"><img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" /></a></div>
+
+<script>
+  // Fade in sections on scroll
+  const sections = document.querySelectorAll("section");
+
+  function fadeInOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach((sec) => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        sec.classList.add("visible");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", fadeInOnScroll);
+  window.addEventListener("load", fadeInOnScroll);
+</script>
+
+</body>
+</html>
