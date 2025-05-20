@@ -1,25 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shahid Khan Thahim Thahim Family</title>
-<meta name="description" content="Minister Labour & Human Resources - Official site of Shahid Khan Thahim and the Thahim Family." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thahim Family - Shahid Khan Thahim & Legacy</title>
+  <meta name="description" content="Official Thahim Family Website - Featuring Shahid Khan Thahim, Minister Labour & Human Resources, and the legacy of Thahim family from Sindh, Pakistan." />
+  <link rel="canonical" href="https://yourdomain.com/" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Shahid Khan Thahim Thahim Family" />
-<meta property="og:description" content="Minister Labour & Human Resources - Official site of Shahid Khan Thahim and the Thahim Family." />
-<meta property="og:image" content="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" />
-<meta property="og:url" content="https://yourdomain.com/" />
-<meta property="og:type" content="website" />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Shahid Khan Thahim - Minister Labour & Human Resources" />
+  <meta property="og:description" content="Official Thahim Family Website showcasing Shahid Khan Thahim and family legacy from Sindh." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:type" content="website" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Shahid Khan Thahim Thahim Family" />
-<meta name="twitter:description" content="Minister Labour & Human Resources - Official site of Shahid Khan Thahim and the Thahim Family." />
-<meta name="twitter:image" content="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" />
-
-
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shahid Khan Thahim - Minister Labour & Human Resources" />
+  <meta name="twitter:description" content="Official Thahim Family Website showcasing Shahid Khan Thahim and family legacy from Sindh." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" />
 
   <style>
     body {
@@ -28,7 +28,6 @@
       background: #f0f8ff;
       color: #333;
       scroll-behavior: smooth;
-      overflow: hidden; /* Hide scroll during loading */
     }
     header {
       background: #5ea6e0;
@@ -49,17 +48,16 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #3a86c0;
     }
     section {
       padding: 60px 20px;
       text-align: center;
       max-width: 960px;
       margin: auto;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    section.visible {
-      opacity: 1;
     }
     #featured {
       background: white;
@@ -70,6 +68,8 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
     }
     #featured img {
       width: 100%;
@@ -78,10 +78,16 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       display: block;
       margin: 0 auto;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+    #featured img:hover {
+      transform: scale(1.03);
     }
     #featured h1 {
       margin-top: 20px;
       color: #3a86c0;
+      font-size: 2.4rem;
     }
     #featured p {
       font-weight: bold;
@@ -90,31 +96,29 @@
       color: #555;
     }
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 30px;
-      justify-items: center;
+      justify-content: center;
       margin-top: 40px;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
     }
     .member-card {
       background: white;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      width: 220px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 200px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
-      opacity: 0;
-      transform: translateY(20px);
-      transition-property: opacity, transform;
-    }
-    .member-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .member-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
     .member-card img {
       width: 100%;
@@ -122,63 +126,31 @@
       object-fit: cover;
       border-radius: 10px;
       border: 3px solid #5ea6e0;
-      display: block;
+      transition: transform 0.3s ease;
+    }
+    .member-card img:hover {
+      transform: scale(1.05);
     }
     .member-name {
       margin-top: 12px;
       font-weight: bold;
       color: #3a86c0;
       font-size: 1.1rem;
+      text-align: center;
     }
     .member-desc {
       font-size: 0.9rem;
       color: #666;
-      margin-top: 4px;
-      line-height: 1.2;
-    }
-    #contact p {
-      font-size: 1.1rem;
-      margin: 8px 0;
+      text-align: center;
+      margin-top: 5px;
+      white-space: pre-line;
     }
     footer {
       background: #3a86c0;
       color: white;
       text-align: center;
       padding: 20px;
-      margin-top: 40px;
-    }
-    /* Loading Screen */
-    #loadingScreen {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #5ea6e0;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      z-index: 9999;
-    }
-    #loadingBarContainer {
-      width: 60%;
-      max-width: 400px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 15px;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-    #loadingBar {
-      height: 20px;
-      width: 0%;
-      background: white;
-      border-radius: 15px;
-      transition: width 0.3s ease;
-    }
-    #loadingPercent {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
     /* Popup Overlay */
     #popupOverlay {
@@ -188,8 +160,9 @@
       background-color: rgba(0,0,0,0.8);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       z-index: 2000;
-      cursor: pointer;
+      transition: opacity 0.3s ease;
     }
     #popupImage {
       max-width: 90%;
@@ -197,33 +170,61 @@
       border-radius: 12px;
       box-shadow: 0 0 20px white;
       animation: zoomIn 0.4s ease;
-      cursor: default;
-    }
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      display: none; /* hidden initially */
+      cursor: zoom-out;
     }
     #closeBtn {
       position: absolute;
       top: 30px;
       right: 30px;
       color: white;
-      font-size: 40px;
+      font-size: 30px;
       cursor: pointer;
       font-weight: bold;
+      z-index: 2100;
       user-select: none;
+    }
+    /* Loading spinner */
+    #loadingSpinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3a86c0;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+      display: none; /* hidden initially */
+    }
+
+    /* Animations */
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .member-card {
+        width: 90%;
+      }
+      #featured {
+        max-width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-
-<div id="loadingScreen">
-  <div>Loading Progress</div>
-  <div id="loadingBarContainer">
-    <div id="loadingBar"></div>
-  </div>
-  <div id="loadingPercent">0%</div>
-</div>
 
 <header>
   <nav>
@@ -235,7 +236,7 @@
 
 <section id="featured">
   <h1>Shahid Khan Thahim</h1>
-  <img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" alt="Shahid Khan Thahim portrait - Minister Labour & Human Resources" />
+  <img src="https://raw.githubusercontent.com/thahim/tribe/main/shahidkhan002.jpg" alt="Shahid Khan Thahim portrait - Minister Labour & Human Resources" onclick="openPopup(this.src)" />
   <p>Minister Labour & Human Resources<br>Government of Sindh</p>
 </section>
 
@@ -257,34 +258,18 @@
       <div class="member-name">Asif Thahim</div>
       <div class="member-desc">Brother (1972 - 2013)</div>
     </div>
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/chacha.jpg" alt="Abdul Rehman Thahim - Businessman" />
-      <div class="member-name">Abdul Rehman Thahim</div>
-      <div class="member-desc">Uncle, Businessman</div>
-    </div>
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/chachaaziz.jpg" alt="Abdul Khakique (Aziz) Thahim - Landlord" />
-      <div class="member-name">Abdul Khakique Thahim</div>
-      <div class="member-desc">Alias Abdul Aziz Thahim<br>Landlord</div>
-    </div>
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/me.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/me.jpg" alt="Saad Thahim - Businessman and Government Employee" />
-      <div class="member-name">Saad Thahim</div>
-      <div class="member-desc">Businessman & Govt. Employee</div>
-    </div>
-    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/son.jpg')">
-      <img src="https://raw.githubusercontent.com/thahim/tribe/main/son.jpg" alt="Abdul Salam Jr - Student, 4th Grade" />
-      <div class="member-name">Abdul Salam Jr</div>
-      <div class="member-desc">4th Grade, FPS Karachi</div>
+    <div class="member-card" onclick="openPopup('https://raw.githubusercontent.com/thahim/tribe/main/abid.jpg')">
+      <img src="https://raw.githubusercontent.com/thahim/tribe/main/abid.jpg" alt="Abid Thahim - Brother" />
+      <div class="member-name">Abid Thahim</div>
+      <div class="member-desc">Brother</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Contact Us</h2>
   <p>Email: <a href="mailto:info@thahimfamily.com">info@thahimfamily.com</a></p>
   <p>Phone: <a href="tel:+923152000783">+92 315 2000783</a></p>
-  <p>Location: Karachi, Sindh, Pakistan</p>
 </section>
 
 <footer>
@@ -294,66 +279,29 @@
 <!-- Popup Overlay -->
 <div id="popupOverlay" onclick="closePopup()">
   <span id="closeBtn" title="Close">&times;</span>
+  <div id="loadingSpinner"></div>
   <img id="popupImage" src="" alt="Enlarged Family Photo" />
 </div>
 
 <script>
-  // Show loading progress from 0 to 100
-  const loadingBar = document.getElementById('loadingBar');
-  const loadingPercent = document.getElementById('loadingPercent');
-  const loadingScreen = document.getElementById('loadingScreen');
-  const body = document.body;
-
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 8) + 3; // increment random 3-10
-    if(progress >= 100) progress = 100;
-    loadingBar.style.width = progress + '%';
-    loadingPercent.textContent = progress + '%';
-    if(progress === 100){
-      clearInterval(interval);
-      // fade out loading screen
-      loadingScreen.style.opacity = 0;
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-        body.style.overflow = 'auto'; // enable scroll
-        showSectionsWithAnimation();
-      }, 700);
-    }
-  }, 150);
-
-  // Show sections with fade-in and slide animation
-  function showSectionsWithAnimation() {
-    const sections = document.querySelectorAll('section');
-    let delay = 0;
-    sections.forEach(section => {
-      setTimeout(() => {
-        section.classList.add('visible');
-      }, delay);
-      delay += 300;
-    });
-
-    // Animate gallery cards individually
-    const cards = document.querySelectorAll('.member-card');
-    cards.forEach((card, i) => {
-      setTimeout(() => {
-        card.classList.add('visible');
-      }, delay + i * 150);
-    });
-  }
-
-  // Popup for gallery images
   const popupOverlay = document.getElementById('popupOverlay');
   const popupImage = document.getElementById('popupImage');
   const closeBtn = document.getElementById('closeBtn');
+  const loadingSpinner = document.getElementById('loadingSpinner');
 
-  function openPopup(imgSrc){
-    popupImage.src = imgSrc;
+  function openPopup(imgSrc) {
     popupOverlay.style.display = 'flex';
+    popupOverlay.style.opacity = 1;
+    popupImage.style.display = 'none';
+    loadingSpinner.style.display = 'block';
+
     setTimeout(() => {
-      popupOverlay.style.opacity = 1;
-    }, 10);
+      loadingSpinner.style.display = 'none';
+      popupImage.src = imgSrc;
+      popupImage.style.display = 'block';
+    }, 500);
   }
+
   function closePopup(){
     popupOverlay.style.opacity = 0;
     setTimeout(() => {
