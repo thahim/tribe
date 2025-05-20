@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +41,8 @@
       display: flex;
       justify-content: center;
       gap: 30px;
+      /* Remove any transform or rotate */
+      transform: none !important;
     }
     nav a {
       color: white;
@@ -49,6 +50,8 @@
       font-weight: bold;
       font-size: 1.1rem;
       transition: color 0.3s ease;
+      /* Ensure text is normal */
+      transform: none !important;
     }
     nav a:hover {
       color: #3a86c0;
